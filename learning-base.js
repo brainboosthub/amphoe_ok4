@@ -791,10 +791,35 @@ async function loadMyTotalHours() {
     try {
       const url = new URL(API_URL);
       url.searchParams.set('mode', 'setting');
+      url.searchParams.set('_t', Date.now());
       const response = await fetch(url.toString(), { cache: 'no-store' });
       const json = await response.json();
       if (json?.success !== false) {
-        hourText = String(json?.data?.hourText || json?.hourText || 'ชั่วโมง').trim() || 'ชั่วโมง';
+        const setting = json?.data || json || {};
+        hourText = String(setting?.hourText || 'ชั่วโมง').trim() || 'ชั่วโมง';
+
+        const headerImageUrl = String(
+          setting?.headerImage ||
+          setting?.headerImageUrl ||
+          setting?.shopActivityHeaderImage ||
+          setting?.shopHeaderImage ||
+          setting?.settingB3 ||
+          setting?.b3 ||
+          ''
+        ).trim();
+        const headerImage = $('shopActivityHeaderImage');
+
+        if (headerImage && headerImageUrl) {
+          headerImage.onload = () => { headerImage.hidden = false; };
+          headerImage.onerror = () => {
+            headerImage.hidden = true;
+            headerImage.removeAttribute('src');
+          };
+          headerImage.src = headerImageUrl;
+        } else if (headerImage) {
+          headerImage.hidden = true;
+          headerImage.removeAttribute('src');
+        }
       }
     } catch (error) {
       console.error('loadSetting error:', error);
