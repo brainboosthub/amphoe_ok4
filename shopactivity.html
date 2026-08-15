@@ -73,6 +73,26 @@
         padding:0;
       }
     }
+
+    .shopactivity-header-image{
+      display:block;
+      width:100%;
+      height:auto;
+      margin:0 0 12px;
+      border-radius:20px;
+      object-fit:contain;
+      background:#fff;
+      box-shadow:0 8px 24px rgba(15,23,42,.08);
+    }
+
+    .shopactivity-header-image[hidden]{display:none!important}
+
+    @media (max-width:768px){
+      .shopactivity-header-image{
+        margin-bottom:10px;
+        border-radius:14px;
+      }
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link
@@ -309,6 +329,13 @@
 </section>
 
 <section id="learningBaseModule"><div class="learning-container">
+
+  <img
+    id="shopActivityHeaderImage"
+    class="shopactivity-header-image"
+    src=""
+    alt="รูป Header ช้อปกิจกรรม"
+    hidden>
 
   <div class="learning-tabs">
 <div style="display:flex;align-items:center;width:100%;gap:10px">
