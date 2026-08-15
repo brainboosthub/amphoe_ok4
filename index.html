@@ -27,6 +27,14 @@
   <link rel="stylesheet" href="boss-box.css?v=20260723-2" />
   <link rel="stylesheet" href="bus-box.css?v=20260723-1" />
   <link rel="stylesheet" href="cliproom-box.css?v=20260815-3" />
+  <link rel="stylesheet" href="shopactivity-box.css?v=20260815-1" />
+  <style>
+    #learningBaseModule.shopactivity-preview{padding:52px 0;background:linear-gradient(145deg,#f4f7fb,#fff 55%,#eff5ff)}
+    #learningBaseModule .shopactivity-arrow{width:40px;height:40px;padding:0;border-radius:50%;background:#fff;color:#2563eb;font-size:28px}
+    #learningBaseModule .shopactivity-dot{width:9px;height:9px;padding:0;border-radius:20px;background:#cbd5e1}
+    #learningBaseModule .shopactivity-dot.active{width:27px;background:#2563eb}
+    @media(max-width:620px){#learningBaseModule.shopactivity-preview{padding:38px 0}#learningBaseModule .shopactivity-arrow{top:auto;bottom:0;width:36px;height:36px;padding:0}}
+  </style>
   <link rel="stylesheet" href="profile-box.css?v=20260731-1" />
 <link rel="stylesheet" href="student-box.css?v=20260724-2" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -59,7 +67,7 @@
       <a href="#newsSlider">ข่าวสาร</a>
       <a href="#learningSourceBox">แหล่งเรียนรู้</a>
       <a href="#cliproomBox">หลักสูตรออนไลน์</a>
-<a href="#learningBaseModule">กิจกรรม</a>
+<a href="shopactivity.html" target="_blank" rel="noopener">กิจกรรม</a>
     </nav>
 
     <div class="nav-profile-actions" aria-label="ข้อมูลสมาชิก">
@@ -263,53 +271,27 @@
   </div>
 </section>
 
-<section id="learningBaseModule"><div class="learning-container">
-
-  <div class="learning-tabs">
-<div style="display:flex;align-items:center;width:100%;gap:10px">
-
-  <div style="display:flex;gap:10px">
-    <button class="active"
-      onclick="LearningBase.showPage('activitiesPage',this)">
-      กิจกรรมทั้งหมด
-    </button>
-
-    <button
-      onclick="LearningBase.showPage('historyPage',this)">
-      กิจกรรมที่ยืนยันแล้ว
-    </button>
-  </div>
-
-  <div style="margin-left:auto">
-    <select
-      id="baseFilter"
-      onchange="LearningBase.filterActivities()"
-      style="width:260px"
-    >
-      <option value="">ทุกฐานการเรียนรู้</option>
-    </select>
-  </div>
-
-</div>
-    
-  </div>
-
-  <section id="activitiesPage">
-    <div class="learning-section-title">
-      <h2>เข้าร่วมกิจกรรม</h2>
-      <button onclick="LearningBase.loadActivities()">รีเฟรช</button>
+<section id="learningBaseModule" class="shopactivity-preview" aria-labelledby="shopActivityTitle">
+  <div class="container">
+    <div class="shopactivity-preview-heading">
+      <div>
+        <div class="activity-box-kicker">★ ฐานการเรียนรู้</div>
+        <h2 id="shopActivityTitle">เข้าร่วมกิจกรรม</h2>
+        <p>เลือกกิจกรรมที่สนใจ สะสม Point และยืนยันการเข้าร่วมได้ในหน้ากิจกรรม</p>
+      </div>
+      <a class="shopactivity-open-all" href="shopactivity.html" target="_blank" rel="noopener">ดูกิจกรรมทั้งหมด</a>
     </div>
-    <div id="activityGrid" class="learning-grid"></div>
-  </section>
-
-  <section id="historyPage" class="learning-hidden">
-    <div class="learning-section-title">
-      <h2>กิจกรรมที่ยืนยันแล้ว</h2>
-      <button onclick="LearningBase.loadHistory()">รีเฟรช</button>
+    <div class="shopactivity-slider">
+      <button id="shopActivityPrev" class="shopactivity-arrow shopactivity-prev" type="button" aria-label="กิจกรรมก่อนหน้า">‹</button>
+      <div class="shopactivity-viewport">
+        <div id="shopActivityTrack" class="shopactivity-track">
+          <div class="shopactivity-loading"><span class="shopactivity-spinner"></span>กำลังโหลดกิจกรรม...</div>
+        </div>
+      </div>
+      <button id="shopActivityNext" class="shopactivity-arrow shopactivity-next" type="button" aria-label="กิจกรรมถัดไป">›</button>
+      <div id="shopActivityDots" class="shopactivity-dots"></div>
     </div>
-    <div id="historyList"></div>
-  </section>
-</div>
+  </div>
 </section>
 
 
@@ -330,6 +312,7 @@
   <script src="boss-box.js?v=20260723-2"></script>
   <script src="bus-box.js?v=20260723-1"></script>
   <script src="cliproom-box.js?v=20260815-3"></script>
+  <script src="shopactivity-box.js?v=20260815-1"></script>
 
 <!-- Student Modal -->
 <div id="studentModal" class="learning-modal">
@@ -630,7 +613,7 @@
     <span>หลักสูตร</span>
   </a>
 
-<a href="#learningBaseModule" class="mobile-bottom-link">
+<a href="shopactivity.html" class="mobile-bottom-link" target="_blank" rel="noopener">
     <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
     <span>กิจกรรม</span>
   </a>
