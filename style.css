@@ -556,7 +556,7 @@ background: #ffffff;
 @media(min-width:1600px){
   #learningBaseModule .learning-container{max-width:1800px}
   #learningBaseModule .learning-grid,
-  #learningBaseModule #activityGrid{grid-template-columns:repeat(auto-fill,minmax(340px,1fr))}
+  #learningBaseModule #activityGrid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
 }
 
 @media(max-width:860px){
