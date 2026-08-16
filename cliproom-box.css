@@ -3,7 +3,7 @@
 .cliproom-title-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
 .cliproom-title-copy{min-width:0}
 .cliproom-heading h2{margin:7px 0 4px;color:#123b69;font-size:clamp(26px,3vw,38px)}
-.cliproom-certificate-image{display:block;width:clamp(150px,18vw,230px);height:auto;max-height:105px;object-fit:contain;flex:0 0 auto}
+.cliproom-certificate-image{display:block;width:clamp(150px,18vw,230px);height:auto;max-height:125px;object-fit:contain;flex:0 0 auto}
 .cliproom-heading p{margin:0;color:#60788b}.cliproom-open-all{display:inline-flex;align-items:center;justify-content:center;min-height:45px;padding:10px 18px;border-radius:13px;background:#0b73ce;color:#fff;text-decoration:none;font-weight:700;white-space:nowrap;box-shadow:0 8px 20px #0b73ce30}
 .cliproom-slider{position:relative;padding:0 48px 34px}.cliproom-viewport{overflow:hidden;border-radius:20px}.cliproom-track{display:flex;gap:18px;transition:transform .45s cubic-bezier(.2,.7,.2,1);will-change:transform;min-height:260px}
 .cliproom-card{flex:0 0 calc((100% - 36px)/3);background:#fff;border:1px solid #dce9f3;border-radius:18px;overflow:hidden;box-shadow:0 12px 30px #123b6914;cursor:pointer;transition:transform .2s,box-shadow .2s}.cliproom-card:hover{transform:translateY(-4px);box-shadow:0 18px 38px #123b6924}
