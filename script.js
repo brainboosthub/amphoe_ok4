@@ -50,6 +50,13 @@ async function loadWebsiteImages() {
 
     const images = result.data || result;
 
+    // setting!D2:F = ชื่อเมนู, ชื่อขยาย, URL ไอคอน
+    const settingMenus = Array.isArray(images.settingMenus)
+      ? images.settingMenus
+      : (Array.isArray(images.menus) ? images.menus : []);
+
+    renderSettingMenus(settingMenus);
+
     // B2 = URL โลโก้
     // B3 = ชื่อเว็บไซต์
     // B4 = URL รูปหัวเว็บ
@@ -123,6 +130,50 @@ if (heroOverlayUrl) {
 
     heroImage.src = heroOverlayUrl;
   }
+}
+
+function renderSettingMenus(items) {
+  const grid = document.getElementById('settingMenuGrid');
+  if (!grid) return;
+
+  const rows = (Array.isArray(items) ? items : [])
+    .map(item => Array.isArray(item)
+      ? { title: item[0], subtitle: item[1], icon: item[2] }
+      : {
+          title: item?.title || item?.menuName || item?.name,
+          subtitle: item?.subtitle || item?.description || item?.expandedName,
+          icon: item?.icon || item?.iconUrl || item?.image
+        })
+    .map(item => ({
+      title: String(item.title || '').trim(),
+      subtitle: String(item.subtitle || '').trim(),
+      icon: String(item.icon || '').trim()
+    }))
+    .filter(item => item.title || item.subtitle || item.icon)
+    .slice(0, 6);
+
+  if (!rows.length) {
+    grid.innerHTML = '<div class="setting-menu-empty">ยังไม่มีข้อมูลเมนูใน setting!D2:F</div>';
+    return;
+  }
+
+  grid.innerHTML = rows.map((item, index) => {
+    // คงลิงก์ทำเนียบบุคลากรเดิมไว้กับรายการ “บุคลากร” เท่านั้น
+    const isTeam = item.title.toLowerCase().includes('บุคลากร');
+    const tag = isTeam ? 'a' : 'div';
+    const linkAttrs = isTeam
+      ? ' href="team.html" aria-label="เปิดหน้าทำเนียบบุคลากร"'
+      : '';
+    const icon = item.icon
+      ? `<img src="${escapeHtml(item.icon)}" alt="" loading="lazy">`
+      : '<i class="fa-solid fa-table-cells-large" aria-hidden="true"></i>';
+
+    return `<${tag} class="setting-menu-item"${linkAttrs}>
+      <span class="team-link-image">${icon}</span>
+      <strong class="setting-menu-title">${escapeHtml(item.title || `เมนู ${index + 1}`)}</strong>
+      <span class="setting-menu-subtitle">${escapeHtml(item.subtitle)}</span>
+    </${tag}>`;
+  }).join('');
 }
 
     if (heroTitleLine1) {
