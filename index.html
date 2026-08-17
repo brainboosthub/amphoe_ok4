@@ -36,7 +36,7 @@
     @media(max-width:620px){#learningBaseModule.shopactivity-preview{padding:38px 0}#learningBaseModule .shopactivity-arrow{top:auto;bottom:0;width:36px;height:36px;padding:0}}
   </style>
   <link rel="stylesheet" href="profile-box.css?v=20260731-1" />
-<link rel="stylesheet" href="student-box.css?v=20260724-2" />
+<link rel="stylesheet" href="student-box.css?v=20260817-1" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link
   rel="stylesheet"
@@ -151,39 +151,11 @@
             </div>
           </aside>
 
-          <section id="studentBox" class="student-box">
-            <div class="student-box-icon">
-              <i class="fa-solid fa-user-graduate"></i>
-            </div>
-            <div class="student-box-content">
-              <h2>สำหรับนักศึกษา</h2>
-              <ul class="student-box-list">
-                <li><i class="fa-solid fa-user"></i><span>โปรไฟล์ของคุณ</span></li>
-                <li><i class="fa-solid fa-chalkboard-user"></i><span>ห้องเรียนออนไลน์</span></li>
-                <li><i class="fa-solid fa-file-circle-check"></i><span>แบบทดสอบออนไลน์</span></li>
-              </ul>
-              <a href="https://brainboosthub.github.io/dole/ex.html"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 class="student-login-btn">
-                <i class="fa-solid fa-right-to-bracket"></i>
-                เข้าสู่ระบบ
-              </a>
+          <section id="studentBox" class="student-box menu-shortcuts" aria-label="เมนูลัด">
+            <div id="settingMenuGrid" class="setting-menu-grid" aria-live="polite">
+              <div class="setting-menu-loading">กำลังโหลดเมนู...</div>
             </div>
           </section>
-
-          <article class="team-link-card">
-            <a href="team.html"
-               class="team-link-card-link"
-               aria-label="เปิดหน้าทำเนียบบุคลากร">
-              <div class="team-link-image">
-                <img src="https://static.wixstatic.com/media/a503e5_c66a13b690264d99aad6ba41509785ba~mv2.png"
-                     alt="บุคลากร"
-                     loading="lazy">
-              </div>
-              <div class="team-link-title">บุคลากร</div>
-            </a>
-          </article>
         </div>
 
       </div>
