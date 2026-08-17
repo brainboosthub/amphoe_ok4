@@ -21,19 +21,16 @@
 
 .boss-box[hidden]{display:none !important;}
 
-.boss-photo-wrap{
-  margin:0 auto 14px;
-  border-radius:12px;
-  overflow:hidden;
-  background:#f1f5f9;
+.boss-photo-wrap {
+  width: 180px;
+  height: auto;
+  margin: 0 auto 14px;
 }
 
-.boss-photo{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;
-  object-position:center top;
+.boss-photo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
 .boss-name{
