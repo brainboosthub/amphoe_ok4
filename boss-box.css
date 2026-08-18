@@ -30,6 +30,7 @@
   display: block;
   object-fit: cover;
   object-position: center top;
+  border-radius: 15px;
 }
 
 .boss-name{
