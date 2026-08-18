@@ -360,6 +360,7 @@
   min-width: 0 !important;
   max-width: none !important;
   height: 100%;
+  margin: 0 !important;
   transform: none !important;
   box-sizing: border-box;
 }
