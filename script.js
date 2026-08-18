@@ -163,9 +163,13 @@ function renderSettingMenus(items) {
     const isTeam = normalizedTitle.includes('บุคลากร');
     const isBestPractice = normalizedTitle.includes('best practice') ||
       normalizedTitle.includes('แนวปฏิบัติที่เป็นเลิศ');
+    const isInnovation = normalizedTitle.includes('นวัตกรรม') ||
+      normalizedTitle.includes('สื่อ/');
     const href = isTeam
       ? 'team.html'
-      : (isBestPractice ? 'best_practice.html' : '');
+      : (isBestPractice
+          ? 'best_practice.html'
+          : (isInnovation ? 'innovation.html' : ''));
     const tag = href ? 'a' : 'div';
     const linkAttrs = href
       ? ` href="${href}" aria-label="เปิดหน้า ${escapeHtml(item.title)}"`
