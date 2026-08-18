@@ -6,6 +6,9 @@
   const API_URL = WEB_APP_URL + '?mode=usercards';
   let users = [];
   let currentIndex = 0;
+  let autoSlideTimer = null;
+  let autoSlidePaused = false;
+  const AUTO_SLIDE_DELAY = 3000;
 
   const escapeHtml = value => String(value ?? '')
     .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
@@ -32,6 +35,29 @@
     track.style.transform = `translateX(-${currentIndex * step}px)`;
     prev.disabled = currentIndex <= 0;
     next.disabled = currentIndex >= maxIndex;
+  }
+
+  function stopAutoSlide() {
+    if (autoSlideTimer) {
+      clearInterval(autoSlideTimer);
+      autoSlideTimer = null;
+    }
+  }
+
+  function startAutoSlide() {
+    stopAutoSlide();
+
+    if (autoSlidePaused || document.hidden || users.length <= visibleCount()) return;
+
+    autoSlideTimer = setInterval(() => {
+      const maxIndex = Math.max(0, users.length - visibleCount());
+      currentIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+      updateSlider();
+    }, AUTO_SLIDE_DELAY);
+  }
+
+  function restartAutoSlide() {
+    startAutoSlide();
   }
 
   function renderUsers() {
@@ -62,7 +88,10 @@
         </div>
       </a>`).join('');
 
-    requestAnimationFrame(updateSlider);
+    requestAnimationFrame(() => {
+      updateSlider();
+      startAutoSlide();
+    });
   }
 
   async function loadUsers() {
@@ -83,6 +112,25 @@
   }
 
   document.addEventListener('DOMContentLoaded', () => {
+    const slider = document.getElementById('userBoxSlider');
+
+    slider?.addEventListener('mouseenter', () => {
+      autoSlidePaused = true;
+      stopAutoSlide();
+    });
+    slider?.addEventListener('mouseleave', () => {
+      autoSlidePaused = false;
+      startAutoSlide();
+    });
+    slider?.addEventListener('touchstart', () => {
+      autoSlidePaused = true;
+      stopAutoSlide();
+    }, { passive: true });
+    slider?.addEventListener('touchend', () => {
+      autoSlidePaused = false;
+      startAutoSlide();
+    }, { passive: true });
+
     document.getElementById('userBox')?.addEventListener('click', event => {
       if (event.target.closest('a, button')) return;
       window.location.href = 'user_all.html';
@@ -91,13 +139,22 @@
       event.stopPropagation();
       currentIndex = Math.max(0, currentIndex - 1);
       updateSlider();
+      restartAutoSlide();
     });
     document.getElementById('userBoxNext')?.addEventListener('click', event => {
       event.stopPropagation();
       currentIndex = Math.min(Math.max(0, users.length - visibleCount()), currentIndex + 1);
       updateSlider();
+      restartAutoSlide();
     });
-    window.addEventListener('resize', updateSlider);
+    window.addEventListener('resize', () => {
+      updateSlider();
+      restartAutoSlide();
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopAutoSlide();
+      else startAutoSlide();
+    });
     loadUsers();
   });
 })();
