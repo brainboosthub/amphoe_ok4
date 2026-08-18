@@ -159,10 +159,16 @@ function renderSettingMenus(items) {
 
   grid.innerHTML = rows.map((item, index) => {
     // คงลิงก์ทำเนียบบุคลากรเดิมไว้กับรายการ “บุคลากร” เท่านั้น
-    const isTeam = item.title.toLowerCase().includes('บุคลากร');
-    const tag = isTeam ? 'a' : 'div';
-    const linkAttrs = isTeam
-      ? ' href="team.html" aria-label="เปิดหน้าทำเนียบบุคลากร"'
+    const normalizedTitle = item.title.toLowerCase();
+    const isTeam = normalizedTitle.includes('บุคลากร');
+    const isBestPractice = normalizedTitle.includes('best practice') ||
+      normalizedTitle.includes('แนวปฏิบัติที่เป็นเลิศ');
+    const href = isTeam
+      ? 'team.html'
+      : (isBestPractice ? 'best_practice.html' : '');
+    const tag = href ? 'a' : 'div';
+    const linkAttrs = href
+      ? ` href="${href}" aria-label="เปิดหน้า ${escapeHtml(item.title)}"`
       : '';
     const icon = item.icon
       ? `<img src="${escapeHtml(item.icon)}" alt="" loading="lazy">`
