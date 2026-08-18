@@ -28,6 +28,7 @@
   <link rel="stylesheet" href="bus-box.css?v=20260723-1" />
   <link rel="stylesheet" href="cliproom-box.css?v=20260815-3" />
   <link rel="stylesheet" href="shopactivity-box.css?v=20260816-1" />
+  <link rel="stylesheet" href="user-box.css?v=20260818-1" />
   <style>
     #learningBaseModule.shopactivity-preview{padding:52px 0;background:linear-gradient(145deg,#f4f7fb,#fff 55%,#eff5ff)}
     #learningBaseModule .shopactivity-arrow{width:40px;height:40px;padding:0;border-radius:50%;background:#fff;color:#2563eb;font-size:28px}
@@ -159,6 +160,29 @@
         </div>
 
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- รายการ User: แสดงเป็นสไลด์ก่อนแหล่งเรียนรู้ -->
+<section id="userBox" class="user-box-section" aria-label="รายการผู้ใช้งาน">
+  <div class="container">
+    <div class="user-box-heading">
+      <a class="user-box-heading-link" href="user_all.html">
+        <div>
+          <div class="user-box-kicker">★ ผู้ใช้งาน Learning Platform 360</div>
+          <h2>รายการ User</h2>
+        </div>
+        <span class="user-box-open-all">ดูรายการทั้งหมด</span>
+      </a>
+    </div>
+
+    <div id="userBoxSlider" class="user-box-slider">
+      <div id="userBoxTrack" class="user-box-track">
+        <div class="user-box-loading">กำลังโหลดรายการ User...</div>
+      </div>
+      <button id="userBoxPrev" class="user-box-arrow user-box-prev" type="button" aria-label="รายการก่อนหน้า">‹</button>
+      <button id="userBoxNext" class="user-box-arrow user-box-next" type="button" aria-label="รายการถัดไป">›</button>
     </div>
   </div>
 </section>
@@ -297,6 +321,7 @@
   </footer>
 
 <script src="script.js?v=20260722-2"></script>
+<script src="user-box.js?v=20260818-1"></script>
 <script src="learning-source-box.js?v=20260808-4"></script>
   <script src="activity-box.js?v=20260724-1"></script>
   <script src="boss-box.js?v=20260723-2"></script>
