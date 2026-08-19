@@ -32,6 +32,52 @@
   overflow:visible;
 }
 
+.lsb-rating-note{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin:4px 0 8px;
+  color:#171717;
+  font-size:clamp(16px,2vw,22px);
+  font-weight:800;
+  text-align:center;
+}
+
+.lsb-rating-note span{
+  color:#f5a000;
+  font-size:1.15em;
+}
+
+.lsb-show-all-wrap{
+  display:flex;
+  justify-content:center;
+  width:100%;
+  margin-top:26px;
+}
+
+.lsb-show-all-wrap[hidden]{display:none !important;}
+
+.lsb-show-all-btn{
+  min-height:46px;
+  padding:10px 25px;
+  border:0;
+  border-radius:15px;
+  background:#203d16;
+  box-shadow:0 8px 20px rgba(32,61,22,.2);
+  color:#fff;
+  font-family:inherit;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+  transition:transform .2s ease,background .2s ease;
+}
+
+.lsb-show-all-btn:hover{
+  background:#2d571e;
+  transform:translateY(-2px);
+}
+
 .lsb-map-panel{
   position:relative;
   z-index:20;
@@ -417,6 +463,11 @@
 
   .lsb-area-info h3{
     font-size:20px;
+  }
+
+  .lsb-rating-note{
+    margin-top:12px;
+    font-size:15px;
   }
 
 }
