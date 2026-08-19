@@ -4,7 +4,7 @@
 const WEB_APP_URL =
   'https://script.google.com/macros/s/AKfycbxrisIGnewRP8cqrj_-Imv3KtkrXFu-cdUPHN2bqoYVpyJZaV1_K3U6d9o15uc6NBcJlw/exec';
 
-  const INITIAL_ITEMS = 6;
+  const INITIAL_ITEMS = 8;
   const $ = id => document.getElementById(id);
   let allLearningAreas = [];
 
