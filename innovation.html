@@ -14,7 +14,7 @@
   <main class="innovation-page">
     <div class="innovation-container">
       <div class="innovation-topbar">
-        <a class="innovation-back" href="index.html" aria-label="กลับหน้าหลัก">← กลับหน้าหลัก</a>
+        <a class="innovation-back" href="index.html" aria-label="กลับหน้าหลัก" onclick="return backToHome(event)">← กลับหน้าหลัก</a>
       </div>
 
       <header class="innovation-heading">
@@ -39,5 +39,26 @@
     </div>
   </main>
   <script src="innovation.js?v=20260818-1"></script>
+  <script>
+function backToHome(event) {
+  event.preventDefault();
+
+  // เปิด user_all.html เป็นแท็บใหม่
+  if (window.opener && !window.opener.closed) {
+    window.close();
+    return false;
+  }
+
+  // เปิดในแท็บเดียวกัน
+  if (window.history.length > 1) {
+    window.history.back();
+    return false;
+  }
+
+  // เปิด user_all.html โดยตรง
+  window.location.href = 'index.html';
+  return false;
+}
+</script>
 </body>
 </html>
