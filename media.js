@@ -25,14 +25,30 @@
     grade: document.getElementById('mediaGradeFilter'),
     mediaType: document.getElementById('mediaTypeFilter')
   };
+  const searchInput = document.getElementById('mediaSearch');
 
   function getFilteredItems() {
-    return allItems.filter(item =>
-      (!filterElements.title.value || item.title === filterElements.title.value) &&
-      (!filterElements.subject.value || item.subject === filterElements.subject.value) &&
-      (!filterElements.grade.value || item.grade === filterElements.grade.value) &&
-      (!filterElements.mediaType.value || item.mediaType === filterElements.mediaType.value)
-    );
+    const keyword = String(searchInput?.value || '').trim().toLocaleLowerCase('th');
+
+    return allItems.filter(item => {
+      const matchesFilters =
+        (!filterElements.title.value || item.title === filterElements.title.value) &&
+        (!filterElements.subject.value || item.subject === filterElements.subject.value) &&
+        (!filterElements.grade.value || item.grade === filterElements.grade.value) &&
+        (!filterElements.mediaType.value || item.mediaType === filterElements.mediaType.value);
+
+      if (!matchesFilters || !keyword) return matchesFilters;
+
+      const searchableText = [
+        item.title,
+        item.subject,
+        item.grade,
+        item.mediaType,
+        item.owner
+      ].join(' ').toLocaleLowerCase('th');
+
+      return searchableText.includes(keyword);
+    });
   }
 
   function renderItems() {
@@ -111,6 +127,10 @@
       Object.entries(filterElements).forEach(([key, select]) => {
         fillFilter(select, key);
       });
+
+      if (searchInput) {
+        searchInput.addEventListener('input', renderItems);
+      }
 
       if (!allItems.length) {
         grid.innerHTML = '<div class="media-empty">ยังไม่มีรายการในคลังสื่อการสอน</div>';
