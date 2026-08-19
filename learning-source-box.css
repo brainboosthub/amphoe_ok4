@@ -39,8 +39,7 @@
   gap:8px;
   margin:4px 0 8px;
   color:#171717;
-  font-size:clamp(16px,2vw,22px);
-  font-weight:800;
+  font-size:clamp(16px,2vw,18px);
   text-align:center;
 }
 
