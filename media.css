@@ -45,7 +45,7 @@ body{
 .media-filters select,
 .media-filters input{
   width:100%;min-height:46px;padding:8px 40px 8px 14px;border:1px solid var(--media-line);
-  border-radius:12px;background:#fff;color:#334155;font:500 15px "Kanit",sans-serif
+  border-radius:12px;background:#fff;color:#334155;font:15px "Kanit",sans-serif
 }
 
 .media-filters input{padding-right:14px}
