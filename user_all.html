@@ -14,7 +14,11 @@
   <main class="users-page">
     <div class="users-container">
       <div class="users-topbar">
-        <a class="users-back" href="index.html">← กลับหน้าหลัก</a>
+       <a class="users-back"
+   href="index.html"
+   onclick="return backToHome(event)">
+  ← กลับหน้าหลัก
+</a>
       </div>
 
       <header class="users-heading">
@@ -43,6 +47,30 @@
       </section>
     </div>
   </main>
-  <script src="user-all.js?v=20260818-1"></script>
+<script src="user-all.js?v=20260818-1"></script>
+
+<script>
+function backToHome(event) {
+  event.preventDefault();
+
+  // เปิด user_all.html เป็นแท็บใหม่
+  if (window.opener && !window.opener.closed) {
+    window.close();
+    return false;
+  }
+
+  // เปิดในแท็บเดียวกัน
+  if (window.history.length > 1) {
+    window.history.back();
+    return false;
+  }
+
+  // เปิด user_all.html โดยตรง
+  window.location.href = 'index.html';
+  return false;
+}
+</script>
+
 </body>
 </html>
+
