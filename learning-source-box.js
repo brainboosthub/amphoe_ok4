@@ -4,8 +4,9 @@
 const WEB_APP_URL =
   'https://script.google.com/macros/s/AKfycbxrisIGnewRP8cqrj_-Imv3KtkrXFu-cdUPHN2bqoYVpyJZaV1_K3U6d9o15uc6NBcJlw/exec';
 
-  const MAX_ITEMS = 20; //แสดงจำกัดจำนวน
+  const INITIAL_ITEMS = 6;
   const $ = id => document.getElementById(id);
+  let allLearningAreas = [];
 
 const esc = value =>
   String(value ?? '')
@@ -22,6 +23,59 @@ const esc = value =>
 
   const formatNumber = value =>
     num(value).toLocaleString('th-TH');
+
+  const ratingNumber = area => {
+    const raw = area?.rating ??
+      area?.Rating ??
+      area?.score ??
+      area?.satisfactionRating ??
+      area?.satisfaction_score ??
+      area?.[4] ??
+      0;
+
+    const parsed = parseFloat(
+      String(raw ?? 0).replaceAll(',', '').trim()
+    );
+
+    return Number.isFinite(parsed) ? parsed : 0;
+  };
+
+  function bindAreaCards(grid) {
+    const openArea = card => {
+      const areaName = card.dataset.areaName;
+      if (!areaName) return;
+
+      const url = new URL('learning.html', window.location.href);
+      url.searchParams.set('area', areaName);
+      window.open(url.href, '_blank', 'noopener,noreferrer');
+    };
+
+    grid.querySelectorAll('[data-area-sheet]').forEach(card => {
+      card.addEventListener('click', () => openArea(card));
+      card.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        openArea(card);
+      });
+    });
+  }
+
+  function renderLearningAreas(showAll) {
+    const grid = $('lsbAreaGrid');
+    const wrap = $('lsbShowAllWrap');
+    if (!grid) return;
+
+    const displayAreas = showAll
+      ? allLearningAreas
+      : allLearningAreas.slice(0, INITIAL_ITEMS);
+
+    grid.innerHTML = displayAreas.map(area => areaCard(area)).join('');
+    bindAreaCards(grid);
+
+    if (wrap) {
+      wrap.hidden = showAll || allLearningAreas.length <= INITIAL_ITEMS;
+    }
+  }
 
 
   /* ============================
@@ -71,54 +125,15 @@ const esc = value =>
     }
 
 
-    /* แสดงสูงสุด 9 รายการแรก */
+    // เรียง rating (คอลัมน์ E) จากมากไปน้อย และคงลำดับเดิมเมื่อคะแนนเท่ากัน
+    allLearningAreas = areas
+      .map((area, index) => ({ area, index }))
+      .sort((a, b) =>
+        ratingNumber(b.area) - ratingNumber(a.area) || a.index - b.index
+      )
+      .map(item => item.area);
 
-    const displayAreas =
-      areas.slice(0, MAX_ITEMS);
-
-
-    grid.innerHTML =
-      displayAreas
-        .map(area => areaCard(area))
-        .join('');
-
-
-    /* เปิดรายการแหล่งเรียนรู้ของตำบลที่เลือก */
-
-    const openArea = card => {
-      const areaName = card.dataset.areaName;
-
-      if (!areaName) return;
-
-      const url = new URL(
-        'learning.html',
-        window.location.href
-      );
-
-      // ไม่ส่ง Spreadsheet ID ไปใน URL
-      // learning.html จะค้นหา ID จากชื่อตำบลภายในระบบ
-      url.searchParams.set('area', areaName);
-
-      window.open(
-        url.href,
-        '_blank',
-        'noopener,noreferrer'
-      );
-    };
-
-    grid
-      .querySelectorAll('[data-area-sheet]')
-      .forEach(card => {
-        card.addEventListener('click', () => openArea(card));
-
-        card.addEventListener('keydown', event => {
-          if (event.key !== 'Enter' && event.key !== ' ') return;
-
-          event.preventDefault();
-          openArea(card);
-        });
-
-      });
+    renderLearningAreas(false);
 
   };
 
@@ -278,6 +293,10 @@ function areaCard(area) {
 
     document.body.appendChild(script);
   }
+
+  $('lsbShowAllBtn')?.addEventListener('click', () => {
+    renderLearningAreas(true);
+  });
 
 
   if (document.readyState === 'loading') {
