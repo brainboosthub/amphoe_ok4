@@ -278,7 +278,7 @@
 
       <div class="team-page-topbar">
         <a class="team-back-btn"
-           href="index.html">
+           href="index.html" onclick="return backToHome(event)">
           <i class="fa-solid fa-arrow-left"></i>
           กลับหน้าหลัก
         </a>
@@ -454,6 +454,26 @@
       );
     })();
   </script>
+<script>
+function backToHome(event) {
+  event.preventDefault();
 
+  // เปิด user_all.html เป็นแท็บใหม่
+  if (window.opener && !window.opener.closed) {
+    window.close();
+    return false;
+  }
+
+  // เปิดในแท็บเดียวกัน
+  if (window.history.length > 1) {
+    window.history.back();
+    return false;
+  }
+
+  // เปิด user_all.html โดยตรง
+  window.location.href = 'index.html';
+  return false;
+}
+</script>
 </body>
 </html>
