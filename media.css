@@ -34,16 +34,22 @@ body{
 .media-heading span{display:block;width:62px;height:5px;margin:auto;border-radius:99px;background:var(--media-orange)}
 
 .media-filters{
-  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px;
+  display:grid;
+  grid-template-columns:minmax(180px,1.15fr) minmax(160px,1fr) minmax(90px,.48fr) minmax(170px,1fr) minmax(240px,1.35fr);
+  gap:20px;
   margin-bottom:34px
 }
 
 .media-filters label{display:grid;gap:10px}
-.media-filters label>span{text-align:center;font-size:clamp(10px,2.4vw,15px);font-weight:700;color:#4b4f55}
-.media-filters select{
+.media-filters label>span{text-align:center;font-size:clamp(20px,2.4vw,30px);font-weight:700;color:#4b4f55}
+.media-filters select,
+.media-filters input{
   width:100%;min-height:46px;padding:8px 40px 8px 14px;border:1px solid var(--media-line);
   border-radius:12px;background:#fff;color:#334155;font:500 15px "Kanit",sans-serif
 }
+
+.media-filters input{padding-right:14px}
+.media-filters input:focus,.media-filters select:focus{outline:3px solid rgba(249,115,22,.16);border-color:var(--media-orange)}
 
 .media-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 28px}
 
@@ -72,6 +78,8 @@ body{
 .media-error{color:#b91c1c}
 
 @media(max-width:1100px){
+  .media-filters{grid-template-columns:1fr 1fr .55fr 1fr}
+  .media-search-label{grid-column:1/-1}
   .media-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
