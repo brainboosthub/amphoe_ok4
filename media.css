@@ -41,7 +41,7 @@ body{
 }
 
 .media-filters label{display:grid;gap:10px}
-.media-filters label>span{text-align:center;font-size:clamp(20px,2.4vw,30px);font-weight:700;color:#4b4f55}
+.media-filters label>span{text-align:center;font-size:clamp(10px,2.4vw,15px);font-weight:700;color:#4b4f55}
 .media-filters select,
 .media-filters input{
   width:100%;min-height:46px;padding:8px 40px 8px 14px;border:1px solid var(--media-line);
