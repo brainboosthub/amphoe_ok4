@@ -14,9 +14,7 @@
   <main class="users-page">
     <div class="users-container">
       <div class="users-topbar">
-        <a class="activity-back-btn"
-   href="index.html"
-   onclick="return backToHome(event)">← กลับหน้าหลัก</a>
+        <a class="users-back" href="index.html">← กลับหน้าหลัก</a>
       </div>
 
       <header class="users-heading">
@@ -46,27 +44,5 @@
     </div>
   </main>
   <script src="user-all.js?v=20260818-1"></script>
-  <script>
-function backToHome(event) {
-  event.preventDefault();
-
-  // หาก activity.html เปิดเป็นแท็บใหม่ ให้ปิดแท็บ
-  // หน้า index.html เดิมจะยังแสดงข้อมูลและตำแหน่งเดิม
-  if (window.opener && !window.opener.closed) {
-    window.close();
-    return false;
-  }
-
-  // หากเปิดในแท็บเดียวกัน ให้ย้อนกลับไปหน้าเดิม
-  if (window.history.length > 1) {
-    window.history.back();
-    return false;
-  }
-
-  // กรณีเปิด activity.html โดยตรงและไม่มีประวัติ
-  window.location.href = 'index.html';
-  return false;
-}
-</script>
 </body>
 </html>
