@@ -39,7 +39,7 @@ body{
 }
 
 .media-filters label{display:grid;gap:10px}
-.media-filters label>span{text-align:center;font-size:clamp(20px,2.4vw,16px);font-weight:700;color:#4b4f55}
+.media-filters label>span{text-align:center;font-size:clamp(10px,2.4vw,15px);font-weight:700;color:#4b4f55}
 .media-filters select{
   width:100%;min-height:46px;padding:8px 40px 8px 14px;border:1px solid var(--media-line);
   border-radius:12px;background:#fff;color:#334155;font:500 15px "Kanit",sans-serif
