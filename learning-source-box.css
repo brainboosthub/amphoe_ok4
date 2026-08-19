@@ -397,6 +397,38 @@
   line-height:1.25;
 }
 
+.lsb-area-title-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+.lsb-area-title-row h3{
+  min-width:0;
+  margin:0;
+}
+
+.lsb-area-rating{
+  display:inline-flex;
+  flex:0 0 auto;
+  align-items:center;
+  gap:4px;
+  color:#202020;
+  font-size:17px;
+  line-height:1;
+}
+
+.lsb-area-rating span{
+  color:#f5a000;
+  font-size:24px;
+  line-height:1;
+}
+
+.lsb-area-rating strong{
+  font-weight:700;
+}
+
 
 .lsb-area-stat{
   color:#333;
