@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="media.css?v=20260820-1">
+  <link rel="stylesheet" href="media.css?v=20260820-2">
 </head>
 <body>
   <main class="media-page">
@@ -51,6 +51,12 @@
             <option value="">ทั้งหมด</option>
           </select>
         </label>
+        <label class="media-search-label">
+          <span>ค้นหาทั้งหมด</span>
+          <input id="mediaSearch" type="search"
+                 placeholder="ค้นหาเรื่อง วิชา ชั้น ประเภท หรือเจ้าของผลงาน..."
+                 autocomplete="off">
+        </label>
       </section>
 
       <div id="mediaStatus" class="media-status" role="status">
@@ -62,7 +68,7 @@
     </div>
   </main>
 
-  <script src="media.js?v=20260820-1"></script>
+  <script src="media.js?v=20260820-2"></script>
   <script>
   function backToHome(event) {
     if (event) event.preventDefault();
