@@ -1532,7 +1532,7 @@ main > .section:first-child {
           <label>ความคิดเห็น</label>
           <textarea id="reviewComment" class="control" rows="5"></textarea>
         </div>
-        <button class="btn btn-primary" style="width:100%;margin-top:18px" onclick="submitReviewForm()">
+        <button id="reviewSubmitBtn" type="button" class="btn btn-primary" style="width:100%;margin-top:18px" onclick="submitReviewForm()">
           <i class="fa-solid fa-paper-plane"></i> ส่งความคิดเห็น
         </button>
       </div>
@@ -2348,26 +2348,50 @@ function renderDetail(s) {
 
     function submitReviewForm() {
       if (!activeRating) return toast('กรุณาเลือกคะแนนความพึงพอใจ');
+      if (!activeReviewSource) return toast('ไม่พบรายการแหล่งเรียนรู้');
+      if (!currentSpreadsheetId) return toast('ไม่พบฐานข้อมูลของพื้นที่');
 
       setLoading(true);
+      setReviewSubmitting(true);
 
-      jsonpRequest(
-        'learningReview',
-        {
-          sourceId: activeReviewSource,
-          rating: activeRating,
-          name: document.getElementById('reviewName').value,
-          comment: document.getElementById('reviewComment').value,
-          spreadsheetId: activeSpreadsheetId
-        },
-        function(res) {
-          setLoading(false);
-          closeReview();
-          toast(res.message || 'บันทึกเรียบร้อยแล้ว');
-          openDetail(activeReviewSource, '');
-        },
-        showError
-      );
+      try {
+        jsonpRequest(
+          'learningReview',
+          {
+            sourceId: activeReviewSource,
+            rating: activeRating,
+            name: document.getElementById('reviewName').value,
+            comment: document.getElementById('reviewComment').value,
+            spreadsheetId: currentSpreadsheetId
+          },
+          function(res) {
+            setLoading(false);
+            setReviewSubmitting(false);
+            closeReview();
+            toast(res.message || 'บันทึกเรียบร้อยแล้ว');
+            openDetail(activeReviewSource, '');
+          },
+          function(error) {
+            setLoading(false);
+            setReviewSubmitting(false);
+            showError(error);
+          }
+        );
+      } catch (error) {
+        setLoading(false);
+        setReviewSubmitting(false);
+        showError(error);
+      }
+    }
+
+    function setReviewSubmitting(isSubmitting) {
+      const button = document.getElementById('reviewSubmitBtn');
+      if (!button) return;
+
+      button.disabled = Boolean(isSubmitting);
+      button.innerHTML = isSubmitting
+        ? '<i class="fa-solid fa-spinner fa-spin"></i> กำลังส่งความคิดเห็น...'
+        : '<i class="fa-solid fa-paper-plane"></i> ส่งความคิดเห็น';
     }
 
     function setRating(value) {
