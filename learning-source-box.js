@@ -156,6 +156,9 @@ function areaCard(area) {
   const sourceCount =
     num(area.sourceCount);
 
+  const rating =
+    ratingNumber(area);
+
 
   return `
     <article
@@ -188,9 +191,16 @@ function areaCard(area) {
 
       <div class="lsb-area-info">
 
-        <h3>
-          ${esc(name)}
-        </h3>
+        <div class="lsb-area-title-row">
+          <h3>
+            ${esc(name)}
+          </h3>
+
+          <div class="lsb-area-rating" aria-label="คะแนนความพึงพอใจ ${formatNumber(rating)}">
+            <span aria-hidden="true">★</span>
+            <strong>${formatNumber(rating)}</strong>
+          </div>
+        </div>
 
         <div class="lsb-area-stat">
           จำนวนแหล่งเรียนรู้
