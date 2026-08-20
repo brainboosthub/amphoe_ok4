@@ -166,15 +166,20 @@ function renderSettingMenus(items) {
     const isMedia = normalizedTitle.includes('คลังสื่อการสอน') ||
       normalizedTitle.includes('สื่อการสอน') ||
       normalizedTitle.includes('teaching materials');
+    const isReward = normalizedTitle.includes('รางวัล') ||
+      normalizedTitle.includes('เกียรติบัตร') ||
+      normalizedTitle.includes('awards and certificates');
     const isInnovation = normalizedTitle.includes('นวัตกรรม') ||
       normalizedTitle.includes('สื่อ/');
     const href = isTeam
       ? 'team.html'
       : (isBestPractice
           ? 'best_practice.html'
-          : (isMedia
-              ? 'media.html'
-              : (isInnovation ? 'innovation.html' : '')));
+          : (isReward
+              ? 'reward.html'
+              : (isMedia
+                  ? 'media.html'
+                  : (isInnovation ? 'innovation.html' : ''))));
     const tag = href ? 'a' : 'div';
     const linkAttrs = href
       ? ` href="${href}" aria-label="เปิดหน้า ${escapeHtml(item.title)}"`
