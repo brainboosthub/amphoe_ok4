@@ -169,17 +169,23 @@ function renderSettingMenus(items) {
     const isReward = normalizedTitle.includes('รางวัล') ||
       normalizedTitle.includes('เกียรติบัตร') ||
       normalizedTitle.includes('awards and certificates');
+    const isCourse = normalizedTitle.includes('คลังหลักสูตร') ||
+      normalizedTitle.includes('คลังหลังสูตร') ||
+      normalizedTitle.includes('our course') ||
+      normalizedTitle === 'หลักสูตร';
     const isInnovation = normalizedTitle.includes('นวัตกรรม') ||
       normalizedTitle.includes('สื่อ/');
     const href = isTeam
       ? 'team.html'
       : (isBestPractice
           ? 'best_practice.html'
-          : (isReward
-              ? 'reward.html'
-              : (isMedia
-                  ? 'media.html'
-                  : (isInnovation ? 'innovation.html' : ''))));
+          : (isCourse
+              ? 'course.html'
+              : (isReward
+                  ? 'reward.html'
+                  : (isMedia
+                      ? 'media.html'
+                      : (isInnovation ? 'innovation.html' : '')))));
     const tag = href ? 'a' : 'div';
     const linkAttrs = href
       ? ` href="${href}" aria-label="เปิดหน้า ${escapeHtml(item.title)}"`
