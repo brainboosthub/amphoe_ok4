@@ -72,25 +72,6 @@
     if (input) input.value = rollno;
     if (button) button.disabled = true;
 
-    // Reserve a new tab while this submit event is still a direct user action.
-    // This prevents browsers from blocking the tab after the async login request.
-    const profileWindow = window.open('', '_blank');
-
-    if (!profileWindow) {
-      if (button) button.disabled = false;
-      await showMessage({
-        icon: 'warning',
-        title: 'ไม่สามารถเปิดหน้าใหม่ได้',
-        text: 'กรุณาอนุญาต Pop-up สำหรับเว็บไซต์นี้ แล้วลองเข้าสู่ระบบอีกครั้ง',
-        confirmButtonText: 'ตกลง'
-      });
-      return;
-    }
-
-    profileWindow.document.title = 'กำลังเข้าสู่ระบบ...';
-    profileWindow.document.body.innerHTML =
-      '<p style="font-family:Arial,sans-serif;text-align:center;margin-top:15vh;color:#374151">กำลังเข้าสู่ระบบ กรุณารอ...</p>';
-
     if (window.Swal) {
       Swal.fire({
         title: '<p style="font-size:20px;font-weight:700;margin:0">เรากำลังนำท่านเข้าสู่ระบบ<br>กรุณารอ...</p>',
@@ -110,11 +91,23 @@
       }
 
       sessionStorage.setItem('SSS_PROFILE_ROLLNO', rollno);
-      profileWindow.location.replace(
-        `profile.html?rollno=${encodeURIComponent(rollno)}`
-      );
+      if (window.Swal) Swal.close();
+
+      const profileUrl =
+        `profile.html?rollno=${encodeURIComponent(rollno)}&_t=${Date.now()}`;
+      const profileWindow = window.open(profileUrl, '_blank');
+
+      if (!profileWindow) {
+        await showMessage({
+          icon: 'warning',
+          title: 'เข้าสู่ระบบสำเร็จ',
+          text: 'กรุณาอนุญาต Pop-up สำหรับเว็บไซต์นี้ เพื่อเปิดหน้าโปรไฟล์',
+          confirmButtonText: 'ตกลง'
+        });
+      } else {
+        profileWindow.opener = null;
+      }
     } catch (error) {
-      if (!profileWindow.closed) profileWindow.close();
       if (window.Swal) Swal.close();
       await showMessage({
         icon: 'error',
