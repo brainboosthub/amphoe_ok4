@@ -72,26 +72,6 @@
     if (input) input.value = rollno;
     if (button) button.disabled = true;
 
-    // A new tab must be reserved during the user's click. Browsers block
-    // window.open() when it is called only after the asynchronous login check.
-    const waitingUrl = `profile.html?waiting=1&_t=${Date.now()}`;
-    const profileWindow = window.open(waitingUrl, '_blank');
-
-    if (!profileWindow) {
-      if (button) button.disabled = false;
-      await showMessage({
-        icon: 'warning',
-        title: 'ไม่สามารถเปิดหน้าโปรไฟล์ได้',
-        text: 'กรุณาอนุญาต Pop-up สำหรับเว็บไซต์นี้ แล้วกด Login อีกครั้ง',
-        confirmButtonText: 'ตกลง'
-      });
-      return;
-    }
-
-    profileWindow.opener = null;
-    profileWindow.blur();
-    window.focus();
-
     if (window.Swal) {
       Swal.fire({
         title: '<p style="font-size:20px;font-weight:700;margin:0">เรากำลังนำท่านเข้าสู่ระบบ<br>กรุณารอ...</p>',
@@ -107,7 +87,7 @@
       const result = await requestProfile(rollno);
 
       if (!result.success) {
-        throw new Error(result.message || 'ไม่พบข้อมูลรหัสนักศึกษา');
+        throw new Error('ไม่พบข้อมูลรหัสนักศึกษา');
       }
 
       sessionStorage.setItem('SSS_PROFILE_ROLLNO', rollno);
@@ -115,9 +95,8 @@
 
       const profileUrl =
         `profile.html?rollno=${encodeURIComponent(rollno)}&_t=${Date.now()}`;
-      profileWindow.location.replace(profileUrl);
+      window.location.replace(profileUrl);
     } catch (error) {
-      if (!profileWindow.closed) profileWindow.close();
       if (window.Swal) Swal.close();
       await showMessage({
         icon: 'error',
