@@ -51,6 +51,7 @@
   font: inherit;
   text-align: center;
   transition: box-shadow .2s ease, background .2s ease;
+  border: 2px solid #dadada;
 }
 
 .student-services-login input:focus {
