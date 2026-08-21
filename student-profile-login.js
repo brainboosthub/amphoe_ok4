@@ -74,7 +74,8 @@
 
     // A new tab must be reserved during the user's click. Browsers block
     // window.open() when it is called only after the asynchronous login check.
-    const profileWindow = window.open('about:blank', '_blank');
+    const waitingUrl = `profile.html?waiting=1&_t=${Date.now()}`;
+    const profileWindow = window.open(waitingUrl, '_blank');
 
     if (!profileWindow) {
       if (button) button.disabled = false;
