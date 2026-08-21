@@ -9,9 +9,25 @@
     * { box-sizing: border-box; }
     html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #fff; }
     .profile-frame { display: block; width: 100%; height: 100%; border: 0; }
+    .profile-waiting {
+      position: fixed; inset: 0; display: grid; place-content: center; gap: 16px;
+      padding: 24px; background: #fff; color: #1f2937; text-align: center;
+      font-family: Arial, sans-serif;
+    }
+    .profile-waiting[hidden] { display: none; }
+    .profile-spinner {
+      width: 48px; height: 48px; margin: auto; border: 5px solid #dbeafe;
+      border-top-color: #2563eb; border-radius: 50%; animation: spin .8s linear infinite;
+    }
+    .profile-waiting strong { font-size: 20px; line-height: 1.5; }
+    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
+  <div id="profileWaiting" class="profile-waiting" hidden role="status">
+    <span class="profile-spinner" aria-hidden="true"></span>
+    <strong>กำลังเข้าสู่ระบบอัตโนมัติ<br>กรุณารอสักครู่...</strong>
+  </div>
   <iframe id="profileFrame" class="profile-frame" title="ระบบโปรไฟล์นักศึกษา"
           allow="clipboard-read; clipboard-write; camera; microphone"
           allowfullscreen></iframe>
@@ -20,10 +36,18 @@
   <script>
     (() => {
       const params = new URLSearchParams(window.location.search);
+      const waiting = params.get('waiting') === '1';
       const rollno = String(params.get('rollno') || sessionStorage.getItem('SSS_PROFILE_ROLLNO') || '')
         .replace(/\D/g, '').slice(0, 10);
       const webAppUrl = String(window.STUDENT_PROFILE_WEB_APP_URL || '').trim();
       const frame = document.getElementById('profileFrame');
+      const waitingBox = document.getElementById('profileWaiting');
+
+      if (waiting) {
+        frame.hidden = true;
+        waitingBox.hidden = false;
+        return;
+      }
 
       if (!rollno || !webAppUrl) {
         window.location.replace('index.html#studentServicesBox');
