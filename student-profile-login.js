@@ -72,6 +72,25 @@
     if (input) input.value = rollno;
     if (button) button.disabled = true;
 
+    // A new tab must be reserved during the user's click. Browsers block
+    // window.open() when it is called only after the asynchronous login check.
+    const profileWindow = window.open('about:blank', '_blank');
+
+    if (!profileWindow) {
+      if (button) button.disabled = false;
+      await showMessage({
+        icon: 'warning',
+        title: 'ไม่สามารถเปิดหน้าโปรไฟล์ได้',
+        text: 'กรุณาอนุญาต Pop-up สำหรับเว็บไซต์นี้ แล้วกด Login อีกครั้ง',
+        confirmButtonText: 'ตกลง'
+      });
+      return;
+    }
+
+    profileWindow.opener = null;
+    profileWindow.blur();
+    window.focus();
+
     if (window.Swal) {
       Swal.fire({
         title: '<p style="font-size:20px;font-weight:700;margin:0">เรากำลังนำท่านเข้าสู่ระบบ<br>กรุณารอ...</p>',
@@ -95,19 +114,9 @@
 
       const profileUrl =
         `profile.html?rollno=${encodeURIComponent(rollno)}&_t=${Date.now()}`;
-      const profileWindow = window.open(profileUrl, '_blank');
-
-      if (!profileWindow) {
-        await showMessage({
-          icon: 'warning',
-          title: 'เข้าสู่ระบบสำเร็จ',
-          text: 'กรุณาอนุญาต Pop-up สำหรับเว็บไซต์นี้ เพื่อเปิดหน้าโปรไฟล์',
-          confirmButtonText: 'ตกลง'
-        });
-      } else {
-        profileWindow.opener = null;
-      }
+      profileWindow.location.replace(profileUrl);
     } catch (error) {
+      if (!profileWindow.closed) profileWindow.close();
       if (window.Swal) Swal.close();
       await showMessage({
         icon: 'error',
