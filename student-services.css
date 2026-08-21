@@ -74,6 +74,11 @@
   line-height: 1;
 }
 
+.student-services-login button:disabled {
+  cursor: wait;
+  opacity: .65;
+}
+
 .student-service-card {
   display: flex;
   min-width: 0;
