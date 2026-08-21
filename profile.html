@@ -9,24 +9,9 @@
     * { box-sizing: border-box; }
     html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #fff; }
     .profile-frame { display: block; width: 100%; height: 100%; border: 0; }
-    .profile-loading {
-      position: fixed; inset: 0; z-index: 2; display: grid; place-content: center;
-      gap: 15px; background: #fff; color: #1f2937; font-family: Arial, sans-serif;
-      text-align: center;
-    }
-    .profile-loading[hidden] { display: none; }
-    .profile-spinner {
-      width: 46px; height: 46px; margin: auto; border: 5px solid #dbeafe;
-      border-top-color: #2563eb; border-radius: 50%; animation: spin .8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
   </style>
 </head>
 <body>
-  <div id="profileLoading" class="profile-loading" role="status">
-    <span class="profile-spinner" aria-hidden="true"></span>
-    <strong>กำลังโหลดข้อมูลโปรไฟล์...</strong>
-  </div>
   <iframe id="profileFrame" class="profile-frame" title="ระบบโปรไฟล์นักศึกษา"
           allow="clipboard-read; clipboard-write; camera; microphone"
           allowfullscreen></iframe>
@@ -39,7 +24,6 @@
         .replace(/\D/g, '').slice(0, 10);
       const webAppUrl = String(window.STUDENT_PROFILE_WEB_APP_URL || '').trim();
       const frame = document.getElementById('profileFrame');
-      const loading = document.getElementById('profileLoading');
 
       if (!rollno || !webAppUrl) {
         window.location.replace('index.html#studentServicesBox');
@@ -49,7 +33,6 @@
       const target = new URL(webAppUrl);
       target.searchParams.set('rollno', rollno);
       target.searchParams.set('githubAutoLogin', '1');
-      frame.addEventListener('load', () => { loading.hidden = true; });
       frame.src = target.toString();
     })();
   </script>
