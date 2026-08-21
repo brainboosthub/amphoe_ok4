@@ -1,0 +1,153 @@
+.student-services-section {
+  padding: 30px 0 42px;
+  background: #f4f4f5;
+}
+
+.student-services-box {
+  width: 100%;
+}
+
+.student-services-box h2 {
+  margin: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d4d4d8;
+  color: #171717;
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.student-services-grid {
+  display: grid;
+  grid-template-columns: minmax(230px, .9fr) minmax(280px, 1fr) minmax(320px, 1.2fr);
+  align-items: center;
+  gap: 34px;
+  padding: 42px 4px 8px;
+}
+
+.student-services-login {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.student-services-login label {
+  color: #262626;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.student-services-login input {
+  width: min(100%, 245px);
+  height: 37px;
+  padding: 6px 16px;
+  border: 0;
+  border-radius: 999px;
+  outline: none;
+  background: #d4d4d4;
+  color: #171717;
+  font: inherit;
+  text-align: center;
+  transition: box-shadow .2s ease, background .2s ease;
+}
+
+.student-services-login input:focus {
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, .18);
+}
+
+.student-services-login button {
+  min-width: 118px;
+  min-height: 41px;
+  padding: 7px 22px;
+  border: 4px solid #fff;
+  border-radius: 999px;
+  background: #073bce;
+  box-shadow: 0 2px 5px rgba(15, 23, 42, .18);
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.student-service-card {
+  display: flex;
+  min-width: 0;
+  min-height: 122px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 24px;
+  border: 0;
+  border-radius: 13px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .03);
+  color: #171717;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: center;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.student-service-card:hover,
+.student-service-card:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, .10);
+}
+
+.student-service-card strong {
+  font-size: clamp(31px, 3.2vw, 43px);
+  font-weight: 600;
+  line-height: 1.05;
+}
+
+.student-service-card span {
+  margin-top: 10px;
+  color: #171717;
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.student-service-exam strong {
+  color: #d99800;
+}
+
+.student-service-classroom strong {
+  color: #2bc1d0;
+}
+
+@media (max-width: 980px) {
+  .student-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .student-services-login {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 640px) {
+  .student-services-section {
+    padding: 26px 0 34px;
+  }
+
+  .student-services-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 28px;
+  }
+
+  .student-services-login {
+    grid-column: auto;
+    margin-bottom: 8px;
+  }
+
+  .student-service-card {
+    min-height: 110px;
+  }
+}
