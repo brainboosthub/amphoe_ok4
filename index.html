@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="cliproom-box.css?v=20260815-3" />
   <link rel="stylesheet" href="shopactivity-box.css?v=20260816-1" />
   <link rel="stylesheet" href="user-box.css?v=20260818-1" />
+  <link rel="stylesheet" href="student-services.css?v=20260821-1" />
   <style>
     #learningBaseModule.shopactivity-preview{padding:52px 0;background:linear-gradient(145deg,#f4f7fb,#fff 55%,#eff5ff)}
     #learningBaseModule .shopactivity-arrow{width:40px;height:40px;padding:0;border-radius:50%;background:#fff;color:#2563eb;font-size:28px}
@@ -159,6 +160,39 @@
           </section>
         </div>
 
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- บริการนักศึกษา: อยู่หลัง news-info-row และก่อนรายการ User -->
+<section id="studentServicesBox" class="student-services-section" aria-labelledby="studentServicesTitle">
+  <div class="container">
+    <div class="student-services-box">
+      <h2 id="studentServicesTitle">บริการนักศึกษา</h2>
+
+      <div class="student-services-grid">
+        <form class="student-services-login" onsubmit="return false;">
+          <label for="studentServicesId">กรอกรหัสนักศึกษา</label>
+          <input
+            id="studentServicesId"
+            name="studentId"
+            type="text"
+            inputmode="numeric"
+            autocomplete="off"
+            aria-label="รหัสนักศึกษา">
+          <button type="submit">Log in</button>
+        </form>
+
+        <button class="student-service-card student-service-exam" type="button">
+          <strong>แบบทดสอบ</strong>
+          <span>แบบทดสอบยกระดับผลสัมฤทธิ์</span>
+        </button>
+
+        <button class="student-service-card student-service-classroom" type="button">
+          <strong>ห้องเรียนออนไลน์</strong>
+          <span>เข้าถึงสื่อและใบงาน</span>
+        </button>
       </div>
     </div>
   </div>
