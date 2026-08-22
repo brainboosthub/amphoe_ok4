@@ -193,43 +193,43 @@
           </nav>
         </div>
 
-        <a class="student-service-card student-service-exam"
-           href="quiz.html" target="_blank" rel="noopener">
+        <article class="student-service-card student-service-exam"
+                 data-ranking-type="quiz">
           <div class="student-service-card-heading">
             <strong>แบบทดสอบ</strong>
             <span>แบบทดสอบยกระดับผลสัมฤทธิ์</span>
           </div>
           <div class="student-service-board">
-            <div class="student-service-tabs" aria-hidden="true">
-              <span class="is-active">ประถม</span><span>ม.ต้น</span><span>ม.ปลาย</span>
+            <div class="student-service-tabs" role="tablist" aria-label="เลือกระดับชั้นของรายงานแบบทดสอบ">
+              <button class="is-active" type="button" role="tab" aria-selected="true" data-level="ประถม">ประถม</button>
+              <button type="button" role="tab" aria-selected="false" data-level="ม.ต้น">ม.ต้น</button>
+              <button type="button" role="tab" aria-selected="false" data-level="ม.ปลาย">ม.ปลาย</button>
             </div>
-            <div class="student-service-ranking">
-              <span>🥇 นางมีนา อิ่มวงษ์</span><b>ครูกาน</b>
-              <span>🥈 นางสาววันเพ็ญ ขันเรียน</span><b>ครูกาน</b>
-              <span>🥉 นางวรรณสา สุดใส</span><b>ครูกาน</b>
+            <div class="student-service-ranking" aria-live="polite">
+              <span class="student-service-ranking-status">กำลังโหลดอันดับ...</span>
             </div>
-            <span class="student-service-open">Open file</span>
+            <a class="student-service-open" href="quiz.html" target="_blank" rel="noopener">Open file</a>
           </div>
-        </a>
+        </article>
 
-        <a class="student-service-card student-service-classroom"
-           href="classroom.html" target="_blank" rel="noopener">
+        <article class="student-service-card student-service-classroom"
+                 data-ranking-type="worksheet">
           <div class="student-service-card-heading">
             <strong>ห้องเรียน</strong>
             <span>แบบทดสอบยกระดับผลสัมฤทธิ์</span>
           </div>
           <div class="student-service-board">
-            <div class="student-service-tabs" aria-hidden="true">
-              <span class="is-active">ประถม</span><span>ม.ต้น</span><span>ม.ปลาย</span>
+            <div class="student-service-tabs" role="tablist" aria-label="เลือกระดับชั้นของรายงานใบงาน">
+              <button class="is-active" type="button" role="tab" aria-selected="true" data-level="ประถม">ประถม</button>
+              <button type="button" role="tab" aria-selected="false" data-level="ม.ต้น">ม.ต้น</button>
+              <button type="button" role="tab" aria-selected="false" data-level="ม.ปลาย">ม.ปลาย</button>
             </div>
-            <div class="student-service-ranking">
-              <span>🥇 นางมีนา อิ่มวงษ์</span><b>ครูกาน</b>
-              <span>🥈 นางสาววันเพ็ญ ขันเรียน</span><b>ครูกาน</b>
-              <span>🥉 นางวรรณสา สุดใส</span><b>ครูกาน</b>
+            <div class="student-service-ranking" aria-live="polite">
+              <span class="student-service-ranking-status">กำลังโหลดอันดับ...</span>
             </div>
-            <span class="student-service-open">Open file</span>
+            <a class="student-service-open" href="classroom.html" target="_blank" rel="noopener">Open file</a>
           </div>
-        </a>
+        </article>
       </div>
     </div>
   </div>
@@ -405,6 +405,7 @@
 <script src="script.js?v=20260820-3"></script>
 <script src="profile-config.js?v=20260821-1"></script>
 <script src="student-profile-login.js?v=20260821-6"></script>
+<script src="student-service-ranking.js?v=20260822-1"></script>
 <script src="user-box.js?v=20260818-2"></script>
 <script src="learning-source-box.js?v=20260819-2"></script>
   <script src="activity-box.js?v=20260724-1"></script>
