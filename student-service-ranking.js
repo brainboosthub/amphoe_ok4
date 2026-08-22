@@ -6,7 +6,7 @@
     'https://script.google.com/macros/s/AKfycbwNWHswYVm6hcJran7djOygoEckCC101qHU9dbSsHCmQWA8r2Sfsez3ZYgbz5BufoQnsw/exec';
 
   const LEVELS = ['ประถม', 'ม.ต้น', 'ม.ปลาย'];
-  const MEDALS = ['🥇1', '🥈2', '🥉3'];
+  const MEDALS = ['🥇1 ', '🥈2 ', '🥉3 '];
   const CACHE_KEY = 'studentServiceTop3:v1';
   const CACHE_AGE = 5 * 60 * 1000;
   let rankingData = null;
