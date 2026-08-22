@@ -29,7 +29,7 @@
   <link rel="stylesheet" href="cliproom-box.css?v=20260815-3" />
   <link rel="stylesheet" href="shopactivity-box.css?v=20260816-1" />
   <link rel="stylesheet" href="user-box.css?v=20260818-1" />
-  <link rel="stylesheet" href="student-services.css?v=20260822-1" />
+  <link rel="stylesheet" href="student-services.css?v=20260822-2" />
   <style>
     #learningBaseModule.shopactivity-preview{padding:52px 0;background:linear-gradient(145deg,#f4f7fb,#fff 55%,#eff5ff)}
     #learningBaseModule .shopactivity-arrow{width:40px;height:40px;padding:0;border-radius:50%;background:#fff;color:#2563eb;font-size:28px}
@@ -184,13 +184,10 @@
               aria-label="รหัสนักศึกษา">
             <button id="studentServicesLoginBtn" type="submit">Log in</button>
           </form>
-
-          <nav class="student-services-links" aria-label="เมนูบริการนักศึกษา">
-            <a href="profile.html">ผลการเรียน</a>
-            <a href="profile.html">วิชาที่ลงทะเบียน</a>
-            <a href="profile.html">ตารางสอบ</a>
-            <a href="profile.html">ผู้คาดว่าจะจบ</a>
-          </nav>
+          <img
+            class="student-services-account-image"
+            src="https://static.wixstatic.com/media/a503e5_de01d7417d364b9a81f6702f7dd6932a~mv2.png"
+            alt="นักศึกษา">
         </div>
 
         <article class="student-service-card student-service-exam"
@@ -199,6 +196,7 @@
             <strong>แบบทดสอบ</strong>
             <span>แบบทดสอบยกระดับผลสัมฤทธิ์</span>
           </div>
+          <p class="student-service-ranking-title">3 ลำดับ ทำแบบทดสอบสูงสุด</p>
           <div class="student-service-board">
             <div class="student-service-tabs" role="tablist" aria-label="เลือกระดับชั้นของรายงานแบบทดสอบ">
               <button class="is-active" type="button" role="tab" aria-selected="true" data-level="ประถม">ประถม</button>
@@ -218,6 +216,7 @@
             <strong>ห้องเรียน</strong>
             <span>แบบทดสอบยกระดับผลสัมฤทธิ์</span>
           </div>
+          <p class="student-service-ranking-title">3 ลำดับ ส่งใบงานสูงสุด</p>
           <div class="student-service-board">
             <div class="student-service-tabs" role="tablist" aria-label="เลือกระดับชั้นของรายงานใบงาน">
               <button class="is-active" type="button" role="tab" aria-selected="true" data-level="ประถม">ประถม</button>
