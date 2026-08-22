@@ -20,7 +20,7 @@
 .student-service-card-heading span{display:block;margin-top:8px;color:#172036;font-size:clamp(18px,1.8vw,24px);font-weight:400;line-height:1.25}
 .student-service-board{overflow:hidden;border-radius:17px;background:#26324d}
 .student-service-tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;background:#fff}
-.student-service-tabs button{margin:0;padding:8px 5px 7px;border:0;border-radius:17px 17px 0 0;background:#c9c9c9;color:#fff;cursor:pointer;font:inherit;font-size:16px;font-weight:700;transition:background .2s ease,transform .2s ease}
+.student-service-tabs button{margin:0;padding:8px 5px 7px;border:0;border-radius:17px 17px 0 0;background:#c9c9c9;color:#fff;cursor:pointer;font:inherit;font-size:16px;transition:background .2s ease,transform .2s ease}
 .student-service-tabs button:hover,.student-service-tabs button:focus-visible{background:#6b7280;outline:2px solid #fff;outline-offset:-3px}
 .student-service-tabs .is-active{background:#26324d}
 .student-service-ranking{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px 15px;padding:20px 18px 10px;color:#fff;font-size:16px;line-height:1.25;text-align:left}
