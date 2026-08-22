@@ -1,9 +1,9 @@
 (() => {
   'use strict';
 
-  // วาง URL Web App ของ Apps Script ไฟล์ "ผู้นำ" ที่ deploy แล้วตรงนี้
+  // Web App เดิมของระบบหลัก (ไม่ต้องสร้าง Apps Script แยก)
   const STUDENT_SERVICE_API_URL =
-    'PASTE_STUDENT_SERVICE_APPS_SCRIPT_WEB_APP_URL_HERE';
+    'https://script.google.com/macros/s/AKfycbzq9SWm2mEBe_gsusJKNEj7hlORO29BejRrOI7CoapwBj145UCyUBccmzdv4pzLAHlW/exec';
 
   const LEVELS = ['ประถม', 'ม.ต้น', 'ม.ปลาย'];
   const MEDALS = ['🥇', '🥈', '🥉'];
