@@ -55,7 +55,7 @@
 
     ranking.innerHTML = rows.map((row, index) => `
       <span title="${escapeHtml(row.teacher)}">
-        ${MEDALS[index]}   ${escapeHtml(row.teacher)}
+        ${MEDALS[index]} &nbsp;${escapeHtml(row.teacher)}
       </span>
       <b title="${Number(row.percent || 0).toFixed(2)}%">
         ${Number(row.percent || 0).toFixed(2)}%
