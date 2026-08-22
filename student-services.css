@@ -11,7 +11,7 @@
 .student-services-login button{min-width:155px;min-height:52px;padding:9px 28px;border:6px solid #fff;border-radius:999px;background:#073bce;box-shadow:0 2px 8px rgba(15,23,42,.18);color:#fff;cursor:pointer;font:inherit;font-size:22px;font-weight:600;line-height:1}
 .student-services-login button:disabled{cursor:wait;opacity:.65}
 .student-services-account-image{display:block;width:min(100%,340px);height:auto;margin:18px auto 0;object-fit:contain}
-.student-service-card{display:flex;min-width:0;min-height:390px;flex-direction:column;justify-content:space-between;overflow:hidden;padding:40px 16px 12px;border-radius:16px;background:#fff;box-shadow:0 12px 35px rgba(34,44,69,.09);color:#172036;text-align:center;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
+.student-service-card{display:flex;min-width:0;min-height:390px;flex-direction:column;justify-content:space-between;overflow:hidden;padding:25px 16px 12px;border-radius:16px;background:#fff;box-shadow:0 12px 35px rgba(34,44,69,.09);color:#172036;text-align:center;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease}
 .student-service-card:hover,.student-service-card:focus-visible{transform:translateY(-5px);box-shadow:0 18px 42px rgba(34,44,69,.15)}
 .student-service-card-heading{padding:0 8px 26px}
 .student-service-card-heading strong{display:block;color:#26324d;font-size:clamp(42px,4vw,56px);font-weight:700;line-height:1}
