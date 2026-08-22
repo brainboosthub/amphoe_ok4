@@ -3,7 +3,7 @@
 
   // Web App เดิมของระบบหลัก (ไม่ต้องสร้าง Apps Script แยก)
   const STUDENT_SERVICE_API_URL =
-    'https://script.google.com/macros/s/AKfycbwNWHswYVm6hcJran7djOygoEckCC101qHU9dbSsHCmQWA8r2Sfsez3ZYgbz5BufoQnsw/exec';
+    'https://script.google.com/macros/s/AKfycbzq9SWm2mEBe_gsusJKNEj7hlORO29BejRrOI7CoapwBj145UCyUBccmzdv4pzLAHlW/exec';
 
   const LEVELS = ['ประถม', 'ม.ต้น', 'ม.ปลาย'];
   const MEDALS = ['🥇', '🥈', '🥉'];
@@ -57,8 +57,8 @@
       <span title="${escapeHtml(row.teacher)}">
         ${MEDALS[index]} ${escapeHtml(row.teacher)}
       </span>
-      <b title="${escapeHtml(row.district)}">
-        ${escapeHtml(row.district || '-')}
+      <b title="${Number(row.percent || 0).toFixed(2)}%">
+        ${Number(row.percent || 0).toFixed(2)}%
       </b>
     `).join('');
   }
