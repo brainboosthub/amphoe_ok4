@@ -3,7 +3,7 @@
 
   // Web App เดิมของระบบหลัก (ไม่ต้องสร้าง Apps Script แยก)
   const STUDENT_SERVICE_API_URL =
-    'https://script.google.com/macros/s/AKfycbzq9SWm2mEBe_gsusJKNEj7hlORO29BejRrOI7CoapwBj145UCyUBccmzdv4pzLAHlW/exec';
+    'https://script.google.com/macros/s/AKfycbwNWHswYVm6hcJran7djOygoEckCC101qHU9dbSsHCmQWA8r2Sfsez3ZYgbz5BufoQnsw/exec';
 
   const LEVELS = ['ประถม', 'ม.ต้น', 'ม.ปลาย'];
   const MEDALS = ['🥇', '🥈', '🥉'];
